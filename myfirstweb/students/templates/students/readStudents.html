@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titel</title>
+</head>
+<body>
+    <p>Read Student</p>
+    {% if student_list %}
+    <ol>
+        {% for s in student_list %}
+        <li>
+            <a href="{% url 'students:stuDet' s.s_name %}">{{s.s_name}}</a>
+            <a href="{% url 'students:stuMod' s.s_name %}">수정</a>
+            <a href="{% url 'students:stuDel' s.s_name %}">삭제</a>
+        </li>
+        {% endfor %}
+    </ol>
+    {% else %}
+        <p>Student: 0</p>
+    {% endif %}
+
+    <a href="{% url 'students:reg' %}">신규학생등록</a>
+</body>
+</html>
